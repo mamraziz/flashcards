@@ -24,6 +24,9 @@ const flashcards = [
 
 app.get('/flashcards', (req, res) => {
   res.send(flashcards);
+  console.log('Flashcards sent to client');
 });
 
-
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
