@@ -26,7 +26,7 @@ app.post('/flashcards/new', (req, res) => {
 
 
 app.get('/flashcards', (req, res) => {
-  res.send(flashcards);
+  res.send(db.prepare('SELECT * FROM cards').all());
   console.log('Flashcards sent to client');
 });
 
