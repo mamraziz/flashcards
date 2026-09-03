@@ -13,7 +13,6 @@ int page = 0;
 int prev = 33;
 int next = 25;
 JsonDocument doc;
-// sda 26 scl 27
 
 void setup() {
   // put your setup code here, to run once:
@@ -58,12 +57,16 @@ void loop() {
 }
 
 void display() {
+  if (page < 0) {
+    page = doc.size() - 1;
+  }
+  if (page >= doc.size()) {
+    page = 0;
+  }
   String term = doc[page]["term"];
   String def = doc[page]["definition"];
   lcd.clear();
-  if (page < 0 || page > doc.size() - 1 ) {
-    page = 0;
-  }
+
   Serial.println("Term: " + term); 
   Serial.println("Definition: " + def);
   lcd.setCursor(0,0);
